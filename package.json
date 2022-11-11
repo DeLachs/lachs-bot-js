@@ -1,0 +1,22 @@
+{
+  "name": "lachs-bot-js",
+  "version": "1.0.0",
+  "description": "a little discord bot written in js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitea.local.nevermad.de/DeLachs/lachs-bot-js"
+  },
+  "author": "DeLachs",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.6.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0"
+  }
+}
