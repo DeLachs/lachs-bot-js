@@ -3,4 +3,5 @@ node_modules
 .eslintrc.json
 .gitignore
 README.md
-database.sqlite
+data/
+docker-compose.yml

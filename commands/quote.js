@@ -18,7 +18,7 @@ module.exports = {
                 .addStringOption(option =>
                     option
                         .setName('text')
-                        // .setDescription('.')
+                        .setDescription('.')
                         .setRequired(true)))
         .addSubcommand(subcommand =>
             subcommand
