@@ -2,3 +2,4 @@
 node_modules
 database.sqlite
 dump.sql
+.DS_Store
