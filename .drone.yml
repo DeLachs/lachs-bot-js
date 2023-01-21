@@ -1,0 +1,64 @@
+---
+kind: pipeline
+type: docker
+name: build
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+  - name: build container
+    image: docker.io/plugins/docker
+    pull: never
+    settings:
+      registry: gitea.local.nevermad.de
+      username: DeLachs
+      password:
+        from_secret: git_token
+      repo: gitea.local.nevermad.de/${DRONE_REPO,,}
+      tags:
+        - latest
+        - ${DRONE_COMMIT_SHA:0:8}
+  - name: notify
+    image: docker.io/appleboy/drone-discord
+    settings:
+      webhook_id:
+        from_secret: discord_webhook_id
+      webhook_token:
+        from_secret: discord_webhook_token
+      username: Drone
+      message: >
+        {{#success build.status}}
+          Build ``#{{build.number}}`` of ``{{repo.name}} {{commit.branch}}`` succeeded. {{build.link}}
+        {{else}}
+          Build ``#{{build.number}}`` of ``{{repo.name}} {{commit.branch}}`` failed. {{build.link}}
+        {{/success}}
+    when:
+      status:
+        - success
+        - failure
+
+trigger:
+  branch:
+    - main
+  event:
+    - push
+
+---
+kind: pipeline
+type: docker
+name: redeploy
+
+clone:
+  disable: true
+
+steps:
+  - name: redeploy
+    image: docker.io/alpine
+    commands:
+      - apk --update add curl
+      - "curl -X 'POST' 'https://truenas.local.nevermad.de:9443/api/v2.0/chart/release/redeploy' -H 'accept: */*' -H 'Authorization: Basic cm9vdDoySEZFNHZGWTV4cjRmNHRuUzJ3NTdjdXl5UjlFVlpnQw==' -H 'Content-Type: application/json' -d '\"${DRONE_REPO_NAME}\"'"
+
+depends_on:
+  - build
