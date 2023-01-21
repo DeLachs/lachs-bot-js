@@ -5,4 +5,6 @@ node_modules
 README.md
 data/
 docker-compose.yml
+docker-compose-test.yml
+.drone.yml
 .DS_Store

@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  lachs-bot:
+    build:
+      dockerfile: ./Dockerfile
+    container_name: lachs-bot
+    restart: unless-stopped
+    #env_file:
+    #  - stack.env
