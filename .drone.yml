@@ -33,7 +33,7 @@ steps:
           Build ``#{{build.number}}`` of ``{{repo.name}} {{commit.branch}}`` succeeded. {{build.link}}
         {{else}}
           Build ``#{{build.number}}`` of ``{{repo.name}} {{commit.branch}}`` failed. {{build.link}}
-        {{/success}}
+        {{/success}}        
     when:
       status:
         - success
@@ -62,3 +62,11 @@ steps:
 
 depends_on:
   - build
+
+
+# sollte ne bessere Lösung geben, aber ist nen quick fix
+trigger:
+  branch:
+    - main
+  event:
+    - push
