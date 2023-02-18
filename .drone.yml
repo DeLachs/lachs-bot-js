@@ -21,12 +21,6 @@ steps:
         - latest
         - ${DRONE_COMMIT_SHA:0:8}
 
-trigger:
-  branch:
-    - main
-  event:
-    - push
-
 ---
 kind: pipeline
 type: docker
