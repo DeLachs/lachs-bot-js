@@ -1,5 +1,7 @@
 # lachs-bot-js
 
+[![Build Status](https://drone.local.nevermad.de/api/badges/DeLachs/lachs-bot-js/status.svg)](https://drone.local.nevermad.de/DeLachs/lachs-bot-js)
+
 ## env
 
 | variable | use |
