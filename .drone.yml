@@ -34,7 +34,7 @@ steps:
     image: docker.io/alpine
     commands:
       - apk --update add curl
-      #- "curl --request POST https://portainer.local.nevermad.de/api/stacks/webhooks/ba133ef0-9e27-4ec5-87e7-c96ee178ffd2"
+      - "curl --request POST https://portainer.local.nevermad.de/api/stacks/webhooks/1de994ac-4434-412c-ba7a-e8407c918cc1"
 
 depends_on:
   - build
