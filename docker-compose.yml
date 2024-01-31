@@ -1,10 +1,10 @@
 version: '3.9'
 services:
   lachs-bot:
-    image: registry.local.nevermad.de/lachs-bot-js:latest
+    image: ghcr.io/delachs/lachs-bot-js:latest
     container_name: lachs-bot
     restart: unless-stopped
     volumes:
-      - /data/lachs-bot-js/:/app/data:z
+      - ./lachs-bot-js/:/app/data
     env_file:
-      - stack.env
+      - ./.env
